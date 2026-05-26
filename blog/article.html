@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <title>文章详情 | 罗叶医师</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <header id="navbar" class="scrolled">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="logo-icon">
+          <circle cx="14" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 20 Q14 28 22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="14" y1="18" x2="14" y2="26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>罗医师</span>
+      </a>
+      <nav>
+        <a href="../index.html#about">关于我</a>
+        <a href="../index.html#schedule">出诊信息</a>
+        <a href="../index.html#blog">健康科普</a>
+        <a href="../index.html#contact">联系留言</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-page">
+    <div class="container">
+      <a href="index.html" class="back-link">← 返回文章列表</a>
+
+      <article class="article-detail">
+        <header class="article-header">
+          <div class="article-tags" id="article-tags"></div>
+          <h1 id="article-title"></h1>
+          <time id="article-date" class="article-date"></time>
+        </header>
+
+        <div class="article-body" id="article-content">
+          <!-- 由 JS 动态渲染 -->
+        </div>
+
+        <footer class="article-footer">
+          <div class="article-author">
+            <div class="author-avatar">
+              <img src="../images/photo.jpeg" alt="罗叶医师" style="width:100%;height:100%;object-fit:cover;object-position:85% 20%;border-radius:50%;">
+            </div>
+            <div class="author-info">
+              <strong>罗叶 医师</strong>
+              <span>中西医结合内科学 · 主治医师 | 武汉方泰医院 疼痛康复科</span>
+            </div>
+          </div>
+          <p class="disclaimer">免责声明：本文仅供健康科普参考，不能替代专业医疗诊断和治疗。如有健康问题，请及时就医。</p>
+        </footer>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; 2026 罗叶医师个人网站. All Rights Reserved.</p>
+      <p class="footer-icp">ICP 备案号：待填写</p>
+    </div>
+  </footer>
+
+  <script src="../js/blog.js"></script>
+</body>
+</html>
