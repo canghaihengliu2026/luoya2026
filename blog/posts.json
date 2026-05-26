@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pain-rehab",
+    "title": "颈肩腰腿痛的中西医结合康复策略",
+    "excerpt": "颈肩腰腿痛是疼痛康复科最常见的病症。本文详细介绍针灸、推拿、中药外敷与现代康复技术相结合的综合治疗方案。",
+    "date": "2026-05-20",
+    "tags": ["疼痛康复", "颈肩腰腿痛"],
+    "file": "../posts/pain-rehab.md"
+  },
+  {
+    "id": "neck-shoulder-pain",
+    "title": "办公室族的颈肩综合征：预防与自我康复",
+    "excerpt": "长时间伏案工作导致的颈肩酸痛已成为现代职场人群的通病。掌握日常保健操和中医穴位按摩，有效缓解颈肩不适。",
+    "date": "2026-05-15",
+    "tags": ["疼痛康复", "颈肩痛", "自我保健"],
+    "file": "../posts/neck-shoulder-pain.md"
+  },
+  {
+    "id": "lumbar-disc-herniation",
+    "title": "腰椎间盘突出症的中西医结合康复治疗",
+    "excerpt": "腰椎间盘突出症是引起腰腿痛的常见原因。本文介绍从急性期到恢复期的全套中西医结合康复方案，帮助患者科学康复。",
+    "date": "2026-05-10",
+    "tags": ["疼痛康复", "腰椎间盘突出"],
+    "file": "../posts/lumbar-disc-herniation.md"
+  },
+  {
+    "id": "knee-osteoarthritis",
+    "title": "膝骨关节炎的中医调养与康复锻炼",
+    "excerpt": "膝骨关节炎是中老年人最常见的关节疾病。中西医结合治疗可有效缓解疼痛、改善关节功能，延缓疾病进展。",
+    "date": "2026-05-05",
+    "tags": ["疼痛康复", "骨关节炎"],
+    "file": "../posts/knee-osteoarthritis.md"
+  },
+  {
+    "id": "insomnia-tcm",
+    "title": "失眠的中医辨证与调理",
+    "excerpt": "失眠困扰着越来越多的人，中医认为失眠与心、肝、脾、肾等脏腑功能失调密切相关，辨证施治效果显著并有助于疼痛患者的康复。",
+    "date": "2026-04-28",
+    "tags": ["中医调理", "睡眠障碍"],
+    "file": "../posts/insomnia-tcm.md"
+  },
+  {
+    "id": "seasonal-health-spring",
+    "title": "春季养生指南：顺应自然，调养身心",
+    "excerpt": "春主生发，是养肝护肝的最佳时节。本文为您介绍春季中医养生的要点和实用方法，帮助您为一整年的健康打好基础。",
+    "date": "2026-04-20",
+    "tags": ["中医养生", "四季养生"],
+    "file": "../posts/seasonal-health-spring.md"
+  }
+]
