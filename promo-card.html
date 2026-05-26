@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>罗叶医师 · 推介卡片</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #e8ecf1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 10px;
+      font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+      min-height: 100vh;
+    }
+
+    .page-title {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    /* ===== Card Container ===== */
+    .card-wrapper {
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+      position: relative;
+    }
+
+    /* ===== Top Banner ===== */
+    .card-banner {
+      background: linear-gradient(135deg, #1A6B8A 0%, #2B8FB0 40%, #4CAF93 100%);
+      padding: 28px 24px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .card-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .banner-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(4px);
+    }
+
+    .banner-name {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .banner-name .separator {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      margin: 0 6px;
+      vertical-align: middle;
+    }
+
+    .banner-title {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      margin-top: 6px;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== Photo Section ===== */
+    .photo-section {
+      display: flex;
+      align-items: center;
+      padding: 20px 24px 16px;
+      gap: 16px;
+    }
+
+    .photo-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 3px solid #E8F4F8;
+      box-shadow: 0 4px 16px rgba(26,107,138,0.1);
+    }
+
+    .photo-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-info {
+      flex: 1;
+    }
+
+    .photo-info .hospital {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1A6B8A;
+      margin-bottom: 4px;
+    }
+
+    .photo-info .dept {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .photo-info .slogan {
+      font-size: 14px;
+      color: #4CAF93;
+      margin-top: 4px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* ===== Divider ===== */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #E0E0E0 20%, #E0E0E0 80%, transparent);
+      margin: 0 24px;
+    }
+
+    /* ===== Specialties ===== */
+    .specialties {
+      padding: 16px 24px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      color: #999;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .tag-green  { background: #E8F8F0; color: #3A8F6A; }
+    .tag-blue   { background: #E8F4F8; color: #1A6B8A; }
+    .tag-orange { background: #FFF5EB; color: #D08040; }
+    .tag-purple { background: #F0E8F4; color: #7B6BCD; }
+    .tag-cyan   { background: #E0F7FA; color: #00838F; }
+    .tag-pink   { background: #FCE4EC; color: #C06070; }
+
+    /* ===== Highlights ===== */
+    .highlights {
+      padding: 0 24px 16px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .highlight-item {
+      flex: 1;
+      text-align: center;
+      padding: 12px 8px;
+      background: #FAFBFC;
+      border-radius: 12px;
+    }
+
+    .highlight-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1A6B8A;
+    }
+
+    .highlight-label {
+      font-size: 11px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    /* ===== Bottom CTA ===== */
+    .card-cta {
+      margin: 0 24px 24px;
+      background: linear-gradient(135deg, #1A6B8A, #2B8FB0);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .card-cta .cta-text {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-cta .cta-sub {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .card-cta .cta-icons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    .cta-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+    }
+
+    .cta-icon-item .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    /* ===== Footer ===== */
+    .card-footer {
+      text-align: center;
+      padding: 0 24px 20px;
+      font-size: 11px;
+      color: #BBB;
+    }
+
+    /* ===== Share Options ===== */
+    .share-section {
+      max-width: 400px;
+      width: 100%;
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .share-section h3 {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .share-tips {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .share-tips li {
+      list-style: none;
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .share-tips li::before {
+      content: '✓';
+      color: #4CAF93;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Tip: screenshot this */
+    .screenshot-tip {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #1A6B8A;
+      padding: 8px;
+      background: #E8F4F8;
+      border-radius: 8px;
+      border: 1px dashed #B0D4E4;
+    }
+
+    /* Decorative line at top of card */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4CAF93, #1A6B8A, #7B6BCD);
+      z-index: 2;
+      border-radius: 20px 20px 0 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 440px) {
+      .card { border-radius: 16px; }
+      .card-banner { padding: 24px 16px 16px; }
+      .banner-name { font-size: 28px; }
+      .photo-section { padding: 16px 16px 12px; }
+      .specialties { padding: 12px 16px; }
+      .highlights { padding: 0 16px 12px; }
+      .card-cta { margin: 0 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">📱 朋友圈推介卡片</p>
+
+  <!-- ========== CARD START ========== -->
+  <div class="card-wrapper">
+    <div class="card">
+
+      <!-- Banner -->
+      <div class="card-banner">
+        <div class="banner-badge">中西医结合内科学 · 主治医师</div>
+        <div class="banner-name">罗<span class="separator"></span>叶</div>
+        <div class="banner-title">融贯中西 · 精诚为医</div>
+      </div>
+
+      <!-- Photo & Info -->
+      <div class="photo-section">
+        <div class="photo-avatar">
+          <img src="images/photo.jpeg" alt="罗叶医师" loading="lazy">
+        </div>
+        <div class="photo-info">
+          <div class="hospital">武汉方泰医院</div>
+          <div class="dept">疼痛康复科</div>
+          <div class="slogan">祛痛通络 · 调和阴阳</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Specialties -->
+      <div class="specialties">
+        <div class="section-label">擅 长 领 域</div>
+        <div class="tag-grid">
+          <span class="tag tag-green">颈肩腰腿痛康复</span>
+          <span class="tag tag-blue">针灸推拿理疗</span>
+          <span class="tag tag-orange">骨关节病调理</span>
+          <span class="tag tag-purple">术后功能康复</span>
+          <span class="tag tag-cyan">神经病理疼痛</span>
+          <span class="tag tag-pink">中药内服外敷</span>
+        </div>
+      </div>
+
+      <!-- Highlights -->
+      <div class="highlights">
+        <div class="highlight-item">
+          <div class="highlight-num">15<span style="font-size:14px">年</span></div>
+          <div class="highlight-label">临床经验</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">6<span style="font-size:14px">科</span></div>
+          <div class="highlight-label">科室轮转</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">中西医</div>
+          <div class="highlight-label">结合诊疗</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="card-cta">
+        <div class="cta-text">疼痛困扰？扫码预约咨询</div>
+        <div class="cta-sub">为您定制个体化康复方案</div>
+        <div class="cta-icons">
+          <div class="cta-icon-item">
+            <div class="icon-circle">🏥</div>
+            <span>武汉方泰医院</span>
+          </div>
+          <div class="cta-icon-item">
+            <div class="icon-circle">📞</div>
+            <span>预约咨询</span>
+          </div>
+          <div class="cta-icon-item">
+            <div class="icon-circle">💬</div>
+            <span>在线问诊</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer">
+        湖南中医药大学 · 中西医结合临床专业 · 十五年专注疼痛康复
+      </div>
+    </div>
+  </div>
+  <!-- ========== CARD END ========== -->
+
+  <!-- Share Tips -->
+  <div class="share-section">
+    <h3>📤 分享建议</h3>
+    <ul class="share-tips">
+      <li>截屏保存此卡片，发到微信朋友圈</li>
+      <li>配文建议：介绍您的专长和坐诊时间</li>
+      <li>可附加疼痛康复科普小知识</li>
+      <li>加上医院地址和联系方式</li>
+    </ul>
+    <div class="screenshot-tip">
+      💡 提示：用手机截屏或长按保存此卡片图片即可分享
+    </div>
+  </div>
+
+</body>
+</html>
